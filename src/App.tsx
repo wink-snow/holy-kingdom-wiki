@@ -23,6 +23,32 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Auto-update activeSection based on scroll using IntersectionObserver
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+
+    const options = {
+      root: null,
+      // trigger when section is near the center of viewport
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: 0.1
+    } as IntersectionObserverInit;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id') || 'home';
+          setActiveSection(id);
+        }
+      });
+    }, options);
+
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    sections.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToSection = (section: string) => {
     setActiveSection(section);
     setIsMenuOpen(false);
@@ -134,7 +160,9 @@ function App() {
       {/* Main content */}
       <main>
         {/* Hero Section */}
-        <HeroSection onNavigate={scrollToSection} />
+        <section id="home">
+          <HeroSection onNavigate={scrollToSection} />
+        </section>
 
         {/* Relationship Diagram */}
         <section id="relations">
