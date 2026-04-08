@@ -31,8 +31,8 @@ export const FactionMap: React.FC<FactionMapProps> = ({ onEventClick }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="relative min-h-screen py-16 px-4">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">
@@ -45,11 +45,7 @@ export const FactionMap: React.FC<FactionMapProps> = ({ onEventClick }) => {
 
         {/* Map container */}
         <div className="relative bg-slate-900/50 rounded-2xl border border-slate-700 overflow-hidden mb-8">
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-10" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='none' stroke='%23666' stroke-width='0.5'/%3E%3C/svg%3E")`,
-            backgroundSize: '50px 50px'
-          }} />
+          {/* Background pattern removed to expose global background image */}
 
           {/* SVG Map */}
           <svg viewBox="0 0 1000 600" className="w-full h-auto relative z-10">

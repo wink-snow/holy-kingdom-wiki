@@ -73,8 +73,8 @@ export const RelationshipDiagram: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="relative min-h-screen py-16 px-4">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">
@@ -132,11 +132,7 @@ export const RelationshipDiagram: React.FC = () => {
             className="w-full h-auto"
             style={{ transform: `scale(${zoom})`, transformOrigin: 'center' }}
           >
-            {/* Background pattern */}
             <defs>
-              <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1e293b" strokeWidth="0.5" />
-              </pattern>
               {/* Arrow marker */}
               <marker
                 id="arrowhead"
@@ -157,8 +153,6 @@ export const RelationshipDiagram: React.FC = () => {
                 </feMerge>
               </filter>
             </defs>
-
-            <rect width="1000" height="700" fill="url(#grid)" />
 
             {/* Relationship lines */}
             {relationships

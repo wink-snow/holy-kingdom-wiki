@@ -50,7 +50,7 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div data-section={activeSection} className="min-h-screen text-white app-root">
       {/* Progress bar */}
       <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-800">
         <div
