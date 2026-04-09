@@ -211,6 +211,8 @@ export const FactionMap: React.FC<FactionMapProps> = ({ onEventClick }) => {
                   <button
                     onClick={() => setSelectedFaction(null)}
                     className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700"
+                    title="Close faction details"
+                    aria-label="Close faction details"
                   >
                     <X className="w-5 h-5 text-slate-300" />
                   </button>
@@ -350,6 +352,8 @@ export const FactionMap: React.FC<FactionMapProps> = ({ onEventClick }) => {
                   <button
                     onClick={() => setSelectedEvent(null)}
                     className="p-2 rounded-lg bg-slate-700 hover:bg-slate-600"
+                    title="Close event details"
+                    aria-label="Close event details"
                   >
                     <X className="w-5 h-5 text-slate-300" />
                   </button>
