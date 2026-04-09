@@ -23,30 +23,67 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto-update activeSection based on scroll using IntersectionObserver
+  // Auto-update activeSection based on scroll using center-distance strategy
   useEffect(() => {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+    if (typeof window === 'undefined') return;
 
-    const options = {
-      root: null,
-      // trigger when section is near the center of viewport
-      rootMargin: '-40% 0px -40% 0px',
-      threshold: 0.1
-    } as IntersectionObserverInit;
+    const sections = Array.from(document.querySelectorAll('main section[id]')) as HTMLElement[];
+    if (!sections.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id') || 'home';
+    const viewportCenter = () => window.innerHeight / 2;
+
+    const getClosestId = () => {
+      const vc = viewportCenter();
+      // First: if viewport center lies within a section, prefer that section.
+      for (const sec of sections) {
+        const rect = sec.getBoundingClientRect();
+        if (vc >= rect.top && vc <= rect.bottom) {
+          return sec.id || 'home';
+        }
+      }
+
+      // Fallback: choose section whose midpoint is closest to viewport center
+      let closestId = sections[0].id || 'home';
+      let closestDist = Infinity;
+      sections.forEach((sec) => {
+        const rect = sec.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        const dist = Math.abs(mid - vc);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestId = sec.id || 'home';
+        }
+      });
+      return closestId;
+    };
+
+    let rafId: number | null = null;
+    let lastSetId = '';
+    let lastSetAt = 0;
+
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        const id = getClosestId();
+        const now = Date.now();
+        if (id !== lastSetId && now - lastSetAt > 80) {
+          lastSetId = id;
+          lastSetAt = now;
           setActiveSection(id);
         }
       });
-    }, options);
+    };
 
-    const sections = Array.from(document.querySelectorAll('main section[id]'));
-    sections.forEach((el) => observer.observe(el));
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // set initial
+    const initial = getClosestId();
+    setActiveSection(initial);
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const scrollToSection = (section: string) => {
