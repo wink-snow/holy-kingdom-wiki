@@ -142,10 +142,10 @@ img {
 
 /* Per-section backgrounds (images are served from /images/) */
 .app-root[data-section="home"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.16), rgba(2,6,23,0.5)), url('/images/home.jpg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.16), rgba(2,6,23,0.5)), url('/images/home.png');
 }
 .app-root[data-section="relations"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.56)), url('/images/relations.svg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.56)), url('/images/relations.png');
   background-position: center top;
 }
 .app-root[data-section="temple"] {
@@ -155,20 +155,20 @@ img {
   background-image: linear-gradient(180deg, rgba(2,6,23,0.32), rgba(2,6,23,0.62)), url('/images/paladins.png');
 }
 .app-root[data-section="royalty"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.6)), url('/images/royalty.svg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.6)), url('/images/royalty.png');
 }
 .app-root[data-section="nobles"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.6)), url('/images/nobles.svg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.6)), url('/images/nobles.png');
 }
 .app-root[data-section="map"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.22), rgba(2,6,23,0.5)), url('/images/map.svg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.22), rgba(2,6,23,0.5)), url('/images/settings.png');
   background-position: center center;
 }
 .app-root[data-section="timeline"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.6)), url('/images/timeline.svg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.28), rgba(2,6,23,0.6)), url('/images/settings.png');
 }
 .app-root[data-section="settings"] {
-  background-image: linear-gradient(180deg, rgba(2,6,23,0.3), rgba(2,6,23,0.6)), url('/images/settings.svg');
+  background-image: linear-gradient(180deg, rgba(2,6,23,0.3), rgba(2,6,23,0.6)), url('/images/settings.png');
 }
 
 /* Responsive tweaks */

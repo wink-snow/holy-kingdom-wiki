@@ -81,7 +81,7 @@ function App() {
       <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-800">
         <div
           className="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-150"
-          style={{ width: `${scrollProgress}%` }}
+          style={{ width: `${scrollProgress}%` } as React.CSSProperties}
         />
       </div>
 
