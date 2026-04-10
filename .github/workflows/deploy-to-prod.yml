@@ -33,8 +33,7 @@ jobs:
         run: pnpm store prune
 
       - name: Install Dependencies (Diagnostic - Recreate Lockfile)
-        run: rm pnpm-lock.yaml
-        run: pnpm install
+        run: rm pnpm-lock.yaml && pnpm install
 
       # - name: Install Dependencies
       #   run: pnpm install --frozen-lockfile --child-concurrency=1 --loglevel debug
