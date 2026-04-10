@@ -50,16 +50,16 @@ export const holyKingdomCharacters: Character[] = [
   // 王室
   {
     id: 'calca',
-    name: '卡尔嘉·贝萨雷斯',
+    name: '卡尔可·贝萨雷斯',
     nameJp: 'カルカ・ベサーレス',
-    title: '圣王女',
-    affiliation: '王室',
+    title: '清廉的圣王女',
+    affiliation: '王室', // 王室 | 圣骑士团 | 神殿 | 贵族
     race: '人类',
-    job: '圣王',
-    level: 19,
-    description: '洛布尔圣王国的第一位女性君主，称号"清廉的圣王女"。她越过兄长继承王位，是一位虔诚的信徒，手持圣剑萨法利西亚。在亚达巴沃袭击中被杀。',
-    abilities: ['圣剑术', '神圣魔法', '领导力'],
-    status: 'dead',
+    job: '圣王、高级祭司、神官',
+    level: 22,
+    description: '拥有良好的器量和作为高等的魔法吟唱者。凭借这两个特质突破了原本自己继承顺序的低下的障碍，成为了圣王国的国王，也是首任女王。\n\n后来经过将近十年，虽然有些人认为她太过温柔而有所不满，不过统治国家至今还没有过算得上失策的失策。只是统治称不上稳固，反对势力仍是一个隐忧。',
+    abilities: ['第四位阶天使召唤', '神圣光线', '信仰系·美容魔法', '领导力'],
+    status: 'dead', // alive | dead | unknown
     image: 'https://static.wikia.nocookie.net/overlordmaruyama/images/8/86/Calca.png/revision/latest/scale-to-width/360?cb=20171002012932',
     quote: '为了圣王国，我将战斗至最后一刻。'
   },
@@ -79,17 +79,18 @@ export const holyKingdomCharacters: Character[] = [
   },
   {
     id: 'kelart',
-    name: '葵拉特·贝萨雷斯',
-    nameJp: 'ケラルト',
-    title: '圣王',
-    affiliation: '王室',
+    name: '葵拉特·卡斯托迪奥',
+    nameJp: 'ケラルト・カストディオ',
+    title: '神殿最高祭司',
+    affiliation: '神殿',
     race: '人类',
-    job: '前任圣王',
-    level: 17,
-    description: '卡尔嘉的兄长，前任圣王。继承制度改变后，由其妹越过他继承了王位。在亚达巴沃袭击中下落不明。',
-    abilities: ['统治术', '战略'],
-    status: 'unknown',
-    quote: '愿圣王庇佑这片土地。'
+    job: '神官长、高级祭司、教宗',
+    level: 29,
+    description: '和姐姐 雷梅迪奥斯 一起被誉为圣王国 的天才姐妹。是圣王女陛下的双臂。蕾梅蒂欧丝说「神送了三件礼物(智力、才能、美貌)给妹妹」有茶色的齐腰的长发，端正的五官长得和的姐姐非常相似，虽然有眼角的方向和嘴角的形状等一些细微的差异，就连尴尬的表情也和姐姐一模一样。但内在的气质和姐姐完全不同，给人一种心机很高、很腹黑的印象。 最后她被亚达巴奥（迪米乌哥斯）俘虏，头被砍下赠与了头冠恶魔（Circlet）成为了它的施法道具。',
+    abilities: ['第五位阶死者复活', '神圣光线', '魔法抵抗突破化'],
+    status: 'dead',
+    image: 'https://photobeds-1318438545.cos.ap-nanjing.myqcloud.com/img/Kelart.png',
+    quote: '愿圣王女庇佑这片土地。'
   },
 
   // 圣骑士团
@@ -97,44 +98,45 @@ export const holyKingdomCharacters: Character[] = [
     id: 'remedios',
     name: '蕾梅蒂欧丝·卡斯托迪奥',
     nameJp: 'レメディオス・カストディオ',
-    title: '圣骑士团团长',
+    title: '圣王国最强圣骑士',
     affiliation: '圣骑士团',
     race: '人类',
-    job: '圣骑士',
-    level: 24,
-    description: '圣王国最强的圣骑士，称号"白"，九色之一。圣王女的好友，手持圣剑萨法利西亚。实力高强但不擅长思考，容易感情用事，心中有着偏执的正义感。',
-    abilities: ['圣剑术', '神圣魔法', '指挥'],
+    job: '圣骑士（天才）、神圣骑士、除恶者',
+    level: 31,
+    description: '圣王国最强的圣骑士，称号"白"，九色之一。圣王女的好友，手持圣剑萨法利西亚。实力高强但不擅长思考，容易感情用事，心中有着近乎偏执的正义感。',
+    abilities: ['圣击', '流水加速', '刚击', '空斩', '加护魔法', '治愈之力', '指挥'],
     status: 'dead',
-    image: 'https://static.wikia.nocookie.net/overlordmaruyama/images/1/1a/Remedios_Custodio.png/revision/latest/scale-to-width/360?cb=20171003213433',
+    image: 'https://photobeds-1318438545.cos.ap-nanjing.myqcloud.com/img/remedios.jpg',
+    // image: 'https://static.wikia.nocookie.net/overlordmaruyama/images/1/1a/Remedios_Custodio.png/revision/latest/scale-to-width/360?cb=20171003213433',
     quote: '只要我还活着，就绝不会让圣王国毁灭！'
   },
   {
     id: 'neia',
-    name: '涅亚·巴拉哈',
+    name: '宁亚·巴拉哈',
     nameJp: 'ネイア・バラハ',
-    title: '弓使',
+    title: '犯罪者的眼神',
     affiliation: '圣骑士团',
     race: '人类',
-    job: '侍从',
-    level: 18,
-    description: '圣王国的普通侍从，在亚达巴沃事件后成为莫莫最虔诚的信徒，称号"无面者"。她在圣王国传播对魔导王的信仰，最终成为魔导国在圣王国的代理人。',
-    abilities: ['弓术', '信念之力', '演讲'],
+    job: '圣骑士侍从、弓箭手',
+    level: 6,
+    description: '圣王国的普通侍从，在亚达巴沃事件后成为魔导王最虔诚的信徒，称号"无面者"。她在圣王国传播对魔导王的信仰，最终成为魔导国在圣王国的代理人。',
+    abilities: ['弓术'],
     status: 'alive',
     image: 'https://static.wikia.nocookie.net/overlordmaruyama/images/b/ba/Neia_%28Anime%29.png/revision/latest/scale-to-width/360?cb=20240324035459',
     quote: '您是我的太阳，魔导王陛下！'
   },
   {
-    id: 'gab',
-    name: '加尔赞',
-    nameJp: 'ガルザン',
+    id: 'gustav',
+    name: '古斯塔沃·蒙塔涅斯',
+    nameJp: 'グスターボ・モンタニェス',
     title: '圣骑士副团长',
     affiliation: '圣骑士团',
     race: '人类',
-    job: '圣骑士',
+    job: '圣骑士、神圣骑士、领袖（一般）',
     level: 20,
-    description: '圣骑士团副团长之一，称号"桃"。对于团长的缺乏常识的行为感到辛苦。在亚达巴沃袭击王都后下落不明。',
-    abilities: ['圣剑术', '战术指挥'],
-    status: 'unknown',
+    description: '圣骑士团副团长之一，对于团长的缺乏常识的行为感到辛苦。在魔皇亚达巴奥出现时，正在负责北部城塞都市卡林沙的城墙防卫，所以没有参与对亚达巴奥的战斗而幸存了下来，后作为向他国寻求援助的使节团副团长与团长蕾梅迪奥斯同行。在亚达巴奥事件结束后，蕾梅迪奥斯 被调任到别处，他被晋升成 圣骑士团长。',
+    abilities: ['圣击', '战术指挥'],
+    status: 'alive',
     quote: '团长大人，请三思而后行。'
   },
 
@@ -331,9 +333,9 @@ export const relationships: Relationship[] = [
 
   // 圣骑士团关系
   { from: 'calca', to: 'remedios', type: 'ally', description: '君臣与挚友' },
-  { from: 'remedios', to: 'gab', type: 'ally', description: '上下级关系' },
+  { from: 'remedios', to: 'gustav', type: 'ally', description: '上下级关系' },
   { from: 'remedios', to: 'neia', type: 'ally', description: '上下级关系' },
-  { from: 'neia', to: 'gab', type: 'ally', description: '同僚' },
+  { from: 'neia', to: 'gustav', type: 'ally', description: '同僚' },
 
   // 圣王国与外部
   { from: 'calca', to: 'jaldabaoth', type: 'enemy', description: '不共戴天之敌' },
@@ -343,7 +345,7 @@ export const relationships: Relationship[] = [
 
   // 九色内部
   { from: 'remedios', to: 'white', type: 'family', description: '本人' },
-  { from: 'gab', to: 'pink', type: 'family', description: '本人' },
+  { from: 'gustav', to: 'pink', type: 'family', description: '本人' },
 
   // 势力间关系
   { from: 'holy_kingdom', to: 'sorcerer_kingdom', type: 'ally', description: '宗主国与附庸' },
