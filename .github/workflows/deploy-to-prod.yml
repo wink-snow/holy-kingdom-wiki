@@ -36,7 +36,10 @@ jobs:
         run: pnpm config set registry https://registry.npmmirror.com/
 
       - name: Clean and Install Dependencies
-        run: pnpm install --force
+        run: | 
+          rm -rf node_modules
+          rm -f pnpm-lock.yaml
+          pnpm install --force
 
       # - name: Install Dependencies
       #  run: pnpm install --frozen-lockfile
