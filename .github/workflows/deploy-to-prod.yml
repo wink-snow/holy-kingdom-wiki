@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4 
         with:
-          node-version: '24'
+          node-version: '20'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -29,6 +29,9 @@ jobs:
       - name: Set up npm registry
         run: pnpm config set registry https://registry.npmmirror.com/
 
+      - name: Clean pnpm store
+        run: pnpm store prune
+        
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --child-concurrency=1 --loglevel debug
 
