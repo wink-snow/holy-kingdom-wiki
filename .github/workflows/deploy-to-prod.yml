@@ -30,7 +30,7 @@ jobs:
         run: pnpm config set registry https://registry.npmmirror.com/
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --child-concurrency=1
+        run: pnpm install --frozen-lockfile --child-concurrency=1 --loglevel debug
 
       - name: Build Project
         run: pnpm run build
