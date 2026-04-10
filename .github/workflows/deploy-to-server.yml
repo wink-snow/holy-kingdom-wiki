@@ -1,0 +1,52 @@
+name: Deploy Prod to Server
+
+on:
+  workflow_run:
+    workflows: ["Build and Deploy to Prod Branch"]
+    types:
+      - completed
+    branches: # 仅当 Workflow A 在 main 分支上运行时触发
+      - main
+
+jobs:
+  deploy-to-server:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: prod
+
+      - name: Install cloudflared
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl lsb-release
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+          sudo dpkg -i cloudflared.deb
+          cloudflared --version # Verify installation
+      
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          name: id_rsa_github_actions
+          known_hosts: 'just-a-placeholder-so-we-can-add-our-own'
+
+      - name: Add Raspberry Pi (via Tunnel) to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KNOWN_HOSTS_PI }}" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+      
+      - name: Deploy to Raspberry Pi using rsync via Cloudflare Tunnel
+        env:
+          CLOUDFLARED_TUNNEL_HOSTNAME: ${{ secrets.SSH_HOST }}
+        run: |
+          echo "Listing files in current directory before rsync:"
+          ls -la
+
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_rsa_github_actions -o UserKnownHostsFile=~/.ssh/known_hosts -o StrictHostKeyChecking=yes -o ProxyCommand='cloudflared access ssh --hostname ${CLOUDFLARED_TUNNEL_HOSTNAME}'" \
+            ./ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH_ON_PI }}/
