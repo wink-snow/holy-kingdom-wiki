@@ -46,7 +46,9 @@ jobs:
           echo "Listing files in current directory before rsync:"
           ls -la
 
-          rsync -avz --delete \
+          rsync -avz --delete --timeout=300 \
+            --exclude '.git' \
+            --exclude 'cloudflared.deb' \
             -e "ssh -i ~/.ssh/id_rsa_github_actions -o UserKnownHostsFile=~/.ssh/known_hosts -o StrictHostKeyChecking=yes -o ProxyCommand='cloudflared access ssh --hostname ${CLOUDFLARED_TUNNEL_HOSTNAME}'" \
             ./ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH_ON_PI }}/
