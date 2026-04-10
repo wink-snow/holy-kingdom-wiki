@@ -25,7 +25,6 @@ jobs:
         uses: actions/setup-node@v4 
         with:
           node-version: '20'
-          cache: 'pnpm'
 
       - name: Set up npm registry
         run: pnpm config set registry https://registry.npmmirror.com/
@@ -34,7 +33,10 @@ jobs:
       #  run: rm pnpm-lock.yaml && pnpm install
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --child-concurrency=1 --loglevel debug
+        run: pnpm install --frozen-lockfile --loglevel debug
+        env:
+          FETCH_RETRY_LIMIT: 5
+          FETCH_RETRY_MAXTIME: 120000 # 2 分钟
 
       - name: Build Project
         run: pnpm run build
