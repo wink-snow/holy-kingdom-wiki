@@ -24,12 +24,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
         
       - name: Set up Node.js
         uses: actions/setup-node@v4 
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Set up npm registry
         run: pnpm config set registry https://registry.npmmirror.com/
@@ -38,9 +38,7 @@ jobs:
       #  run: rm pnpm-lock.yaml && pnpm install
 
       - name: Install Dependencies
-        run: pnpm install --force
-        env:
-          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: pnpm install --frozen-lockfile
 
       - name: Build Project
         run: pnpm run build
