@@ -34,11 +34,11 @@ jobs:
       - name: Set up npm registry
         run: pnpm config set registry https://registry.npmmirror.com/
 
-      # - name: Install Dependencies(Recreate Lockfile)
-      #  run: rm pnpm-lock.yaml && pnpm install
+      - name: Install Dependencies(Recreate Lockfile)
+        run: rm pnpm-lock.yaml && pnpm install
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+      # - name: Install Dependencies
+      #  run: pnpm install --frozen-lockfile
 
       - name: Build Project
         run: pnpm run build
